@@ -1,0 +1,5 @@
+export { default as Home } from './Home/Home.js'
+export { default as Profil } from './Profil/Profil.js'
+export { default as Settings } from './Settings/Settings.js'
+export { default as Error } from './Error/Error.js'
+export { default as Community } from './Community/Community.js'
