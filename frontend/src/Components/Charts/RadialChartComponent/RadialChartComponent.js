@@ -1,41 +1,34 @@
 import React from 'react';
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis } from 'recharts';
 
-import './ScoreRadialChart.css'
+import './RadialChartComponent.css'
 const legendScore = () => {
   return <h3 className="legendScore">Score</h3>
 }
-const ScoreRadialChart = (dataScore) => {
-
-  const radialData = dataScore.data.map(item => {
-    return {
-      name: `${item.userInfos.firstName} ${item.userInfos.lastName}`,
-      score: item.todayScore ? item.todayScore * 100 : item.score * 100
-    };
-  });
-
+const RadialChartComponent = ({ data }) => {
+  console.log(data)
 
   return (
-    <div className='scoreRadialChart'>
+    <div className='RadialChartComponent'>
       <ResponsiveContainer width="100%" height="100%">
-        <RadialBarChart startAngle={90}
+        <RadialBarChart
+          startAngle={90}
           endAngle={450}
-          outerRadius={300}
           innerRadius={80}
+          outerRadius={260}
           barSize={9}
-          fill="#ff0000"
-          data={radialData}>
+          data={data}>
           <circle cx="50%" cy="50%" fill="white" r="75"></circle>
           <PolarAngleAxis
             type="number"
-            fill="#ff0000"
+            fill="#ff0101"
             domain={[0, 100]}
             tick={false}
             angleAxisId={0}
             axisLineType="circle"
           />
           <RadialBar
-            cornerRadius="10" dataKey="score"
+            cornerRadius="10" dataKey="todayScore"
           />
           <text
             fontWeight="700"
@@ -45,7 +38,7 @@ const ScoreRadialChart = (dataScore) => {
             y="48%"
             textAnchor="middle"
           >
-            {radialData.score}%
+            {data.todayScore}%
           </text>
           <text
             fontSize="16"
@@ -74,4 +67,4 @@ const ScoreRadialChart = (dataScore) => {
   );
 }
 
-export default ScoreRadialChart;
+export default RadialChartComponent;

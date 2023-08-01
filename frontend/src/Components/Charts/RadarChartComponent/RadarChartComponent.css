@@ -1,8 +1,9 @@
-.scoreRadialChart {
+.RadarChartComponent {
     height: 250px;
     width: 250px;
     border-radius: 5px;
-    background-color: #FBFBFB;
+    overflow: hidden;
+    font-size: 10px;
+    background-color: #282D30;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
-
 }

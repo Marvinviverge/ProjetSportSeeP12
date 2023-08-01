@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-import './ActivityBarChart.css'
+import './BarChartComponent.css'
 
-const ActivityBarChart = ({ data }) => {
+const BarChartComponent = ({ data }) => {
     return (
-        <div className='activityBarChart'>
+        <div className='BarChartComponent'>
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     width={500}
@@ -33,4 +33,4 @@ const ActivityBarChart = ({ data }) => {
     );
 };
 
-export default ActivityBarChart;
+export default BarChartComponent;

@@ -2,14 +2,15 @@ import React from 'react';
 import DataService from '@/_Services/data.service';
 
 import './Home.css'
-import PerformanceRadarChart from '@/Components/Charts/PerformanceRadarChart/PerformanceRadarChart.js';
-import ScoreRadialChart from '@/Components/Charts/ScoreRadialChart/ScoreRadialChart';
-import AverageSessionLineChart from '@/Components/Charts/AverageSessionLineChart/AverageSessionLineChart';
-import ActivityBarChart from '@/Components/Charts/ActivityBarChart/ActivityBarChart';
+
 import Nutrients from '@/Components/Nutrients/Nutrients';
 import Title from '@/Components/Title/Title';
+import BarChartComponent from '@/Components/Charts/BarChartComponent/BarChartComponent.js';
+import RadialChartComponent from '@/Components/Charts/RadialChartComponent/RadialChartComponent.js';
+import RadarChartComponent from '@/Components/Charts/RadarChartComponent/RadarChartComponent.js';
+import LineChartComponent from '@/Components/Charts/LineChartComponent/LineChartComponent.js';
 
-const Home = () => {
+const Home = ({ setTypeData }) => {
 
     const dataPerformance = DataService.GetAllPerformance()
     const dataScore = DataService.GetAllMaindata()
@@ -18,14 +19,21 @@ const Home = () => {
 
     return (
         <section className='home'>
+            <div className="typeData">
+                <h2>Choix du type de données : </h2>
+                <div className="typeData_Btns">
+                    <button className="btn" onClick={() => { setTypeData(false) }}> MOCK </button>
+                    <button className="btn" onClick={() => { setTypeData(true) }}> API </button>
+                </div>
+            </div>
             <Title />
             <div className='userDatas'>
                 <div className='charts'>
-                    <ActivityBarChart data={dataActivity.dataModel} />
+                    <BarChartComponent data={dataActivity.dataModel} />
                     <div className='smallCharts'>
-                        <AverageSessionLineChart data={dataSession.dataModel} />
-                        <PerformanceRadarChart data={dataPerformance} />
-                        <ScoreRadialChart data={dataScore} />
+                        <LineChartComponent data={dataSession.dataModel} />
+                        <RadarChartComponent data={dataPerformance} />
+                        <RadialChartComponent data={dataScore} />
                     </div>
                 </div>
                 <div className='nutrientsDetails'>

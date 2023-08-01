@@ -1,4 +1,4 @@
-class UserPerformanceModel {
+class RadarChartModel {
     constructor(data) {
         this.dataPerformance = data.data.map((item) => {
             return {
@@ -11,7 +11,7 @@ class UserPerformanceModel {
 
     changeOrder() {
         let newItemOrder = [{ kind: 'Intensité' }, { kind: 'Vitesse' }, { kind: 'Force' }, { kind: 'Endurance' }, { kind: 'Energie' }, { kind: 'Cardio' }]
-
+        // eslint-disable-next-line
         this.dataPerformance = newItemOrder.map((item) => ({ ...item, ...this.dataPerformance.filter((d) => d.kind == item.kind)[0] }))
     }
 
@@ -28,4 +28,4 @@ class UserPerformanceModel {
     }
 }
 
-export { UserPerformanceModel };  
+export { RadarChartModel };  

@@ -5,14 +5,12 @@ import {
     YAxis,
 } from 'recharts';
 
-import './AverageSessionLineChart.css'
+import './LineChartComponent.css'
 
-
-
-const AverageSessionLineChart = ({ data }) => {
+const LineChartComponent = ({ data }) => {
 
     return (
-        <div className='averageSessionLineChart'>
+        <div className='LineChartComponent'>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={data}>
                     <Line
@@ -54,4 +52,4 @@ const AverageSessionLineChart = ({ data }) => {
     );
 };
 
-export default AverageSessionLineChart;
+export default LineChartComponent;
