@@ -5,3 +5,55 @@
     background-color: #FBFBFB;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
 }
+
+.BarChartComponentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 14px 0 55px 22px;
+}
+
+.BarChartComponentHeader h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #20253A
+}
+
+.legend {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: 500;
+    padding-right: 26px;
+    color: #74798C;
+}
+
+.legendContent {
+    display: flex;
+    flex-direction: row;
+    margin-left: 36px;
+}
+
+.legendDescription {
+    margin-left: 10px;
+}
+
+.customTooltip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #E60000;
+    width: 39px;
+    height: 63px;
+    box-sizing: border-box;
+    padding: 6px 0px;
+    color: white;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.customTooltip p {
+    margin: auto;
+}

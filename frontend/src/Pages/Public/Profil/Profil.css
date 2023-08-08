@@ -1,0 +1,23 @@
+.profil {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 50px;
+}
+
+.userDatas {
+    display: flex;
+    gap: 30px;
+}
+
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.smallCharts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 28px;
+}

@@ -8,28 +8,104 @@ import { LineChartModel } from "@/Components/Models/LineChart_Model.js"
 import { RadarChartModel } from "@/Components/Models/RadarChart_Model.js"
 import { RadialChartModel } from "@/Components/Models/RadialChart_Model.js"
 
-let GetAllActivity = () => {
-    return new BarChartModel(Activity[0].sessions);
-}
+let GetActivity = async (currentUserId) => {
+    try {
+        const response = await fetch(`http://localhost:3000/user/${currentUserId}/activity`);
 
-let GetAllSessions = () => {
-    return new LineChartModel(Sessions[0].sessions);
-}
+        if (response.ok) {
+            const data = await response.json();
+            if (data) {
+                return new BarChartModel(data.data);
+            }
+        } else {
+            throw new Error('Failed to fetch data');
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
 
-let GetAllMaindata = () => {
-    return new RadialChartModel(Maindata[0]);
-}
+        // Utilisation des données fictives (mock)
+        const newData = Activity.find((user) => user.userId === currentUserId);
+        return new BarChartModel(newData);
+    }
+};
 
-let GetAllPerformance = () => {
-    return new RadarChartModel(Performance[0]).dataPerformance;
-}
+let GetSessions = async (currentUserId) => {
+    try {
+        const response = await fetch(
+            `http://localhost:3000/user/${currentUserId}/average-sessions`
+        );
 
+        if (response.ok) {
+            const data = await response.json();
+            if (data) {
+                return new LineChartModel(data.data);
+            }
+        } else {
+            throw new Error('Failed to fetch data');
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+
+        // Utilisation des données fictives (mock)
+        const newData = Sessions.find((user) => user.userId === currentUserId);
+        return new LineChartModel(newData);
+    }
+};
+
+let GetPerformance = async (currentUserId) => {
+    try {
+        const response = await fetch(`http://localhost:3000/user/${currentUserId}/performance`);
+
+        if (response.ok) {
+            const data = await response.json();
+            if (data) {
+                return new RadarChartModel(data.data);
+            }
+        } else {
+            throw new Error('Failed to fetch data');
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+
+        // Utilisation des données fictives (mock)
+        const newData = Performance.find((user) => user.userId === currentUserId);
+        return new RadarChartModel(newData);
+    }
+};
+
+let GetMaindata = async (currentUserId) => {
+    try {
+        const response = await fetch(`http://localhost:3000/user/${currentUserId}`);
+
+        if (response.ok) {
+            const data = await response.json();
+            if (data) {
+                console.log("Vous êtes sur les données de l'API");
+                return new RadialChartModel(data.data);
+            }
+        } else {
+            throw new Error('Failed to fetch data');
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+
+        // Utilisation des données fictives (mock)
+        const newData = Maindata.find((user) => user.id === currentUserId);
+        console.log('Vous êtes sur les données du MOCK');
+        return new RadialChartModel(newData);
+    }
+};
+
+let GetAllUsers = () => {
+    return Maindata
+}
 
 const DataService = {
-    GetAllActivity,
-    GetAllSessions,
-    GetAllMaindata,
-    GetAllPerformance
+    GetActivity,
+    GetSessions,
+    GetMaindata,
+    GetPerformance,
+    GetAllUsers
 }
 
 export default DataService

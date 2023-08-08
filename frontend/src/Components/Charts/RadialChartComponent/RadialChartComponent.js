@@ -6,7 +6,8 @@ const legendScore = () => {
   return <h3 className="legendScore">Score</h3>
 }
 const RadialChartComponent = ({ data }) => {
-  console.log(data)
+
+  const newData = [{ todayScore: data.todayScore, fill: '#ff0101' }]
 
   return (
     <div className='RadialChartComponent'>
@@ -17,7 +18,7 @@ const RadialChartComponent = ({ data }) => {
           innerRadius={80}
           outerRadius={260}
           barSize={9}
-          data={data}>
+          data={newData}>
           <circle cx="50%" cy="50%" fill="white" r="75"></circle>
           <PolarAngleAxis
             type="number"

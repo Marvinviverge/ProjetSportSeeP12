@@ -1,0 +1,18 @@
+.titleMessage h1 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    margin: 0 0 40px 0;
+}
+
+.titleMessage span {
+    color: red;
+}
+
+.titleMessage p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
