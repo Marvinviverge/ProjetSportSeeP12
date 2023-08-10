@@ -45,29 +45,13 @@ const BarChartComponent = ({ data }) => {
     return (
         <div className='BarChartComponent'>
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                    barGap={10}
-                    barSize={10}
-                    data={data}
-                    margin={{
-                        top: 20,
-                        right: 0,
-                        left: 0,
-                        bottom: 5,
-                    }}
-                >
+                <BarChart barGap={10} barSize={10} data={data} margin={{ top: 20, right: 0, left: 0, bottom: 5, }}>
                     <Legend content={BarChartComponentHeader} verticalAlign='top' />
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis
-                        padding={{ left: -47, right: -47 }}
-                        tickLine={false}
-                        tickMargin={10}
-                        tick={{ fill: '#9B9EAC', fontWeight: 500, fontSize: 14 }} />
-                    <YAxis yAxisId="kilogram" orientation="right" domain={['dataMin-1', 'dataMax']} tickLine={false}
-                        tickMargin={20} axisLine={false} tickCount={3} tick={{ fill: '#9B9EAC', fontWeight: 500, fontSize: 14 }} />
+                    <XAxis tickLine={false} tickMargin={10} tick={{ fill: '#9B9EAC', fontWeight: 500, fontSize: 14 }} />
+                    <YAxis yAxisId="kilogram" orientation="right" domain={['dataMin-1', 'dataMax']} tickLine={false} tickMargin={20} axisLine={false} tickCount={3} tick={{ fill: '#9B9EAC', fontWeight: 500, fontSize: 14 }} />
                     <YAxis yAxisId="calories" orientation="left" hide={true} />
-                    <Tooltip content={CustomTooltip} cursor={{ opacity: 0.6 }}
-                        wrapperStyle={{ outlineStyle: 'none' }} />
+                    <Tooltip content={CustomTooltip} cursor={{ opacity: 0.6 }} wrapperStyle={{ outlineStyle: 'none' }} />
                     <Bar yAxisId="kilogram" dataKey="kilogram" fill="#000" radius={[4, 4, 0, 0]} />
                     <Bar yAxisId="calories" dataKey="calories" fill="#E60000" radius={[4, 4, 0, 0]} />
                 </BarChart>

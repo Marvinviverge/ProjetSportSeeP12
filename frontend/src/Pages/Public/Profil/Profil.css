@@ -1,23 +1,31 @@
 .profil {
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 50px 0 0 50px;
     gap: 50px;
+    width: 100%;
 }
 
 .userDatas {
     display: flex;
     gap: 30px;
+    width: 100%;
 }
 
 .charts {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 60%;
 }
 
 .smallCharts {
     display: flex;
     justify-content: space-between;
     margin-top: 28px;
+    gap: 10px;
+}
+
+.nutrientsDetails {
+    width: 40%;
 }
