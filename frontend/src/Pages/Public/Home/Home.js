@@ -1,13 +1,13 @@
 import React from 'react';
 
-import DataService from '@/_Services/data.service.js';
+import MockService from '@/_Services/mock.service.js';
 
 import './Home.css'
 import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
-    const dataAllUsers = DataService.GetAllUsers()
+    const mockAllUsers = MockService.GetAllUsers()
     let navigate = useNavigate()
 
     const onChange = (e) => {
@@ -23,7 +23,7 @@ const Home = () => {
                 <select onChange={onChange}>
                     <option value=''>Veuillez choisir un utilisateur</option>
                     {
-                        dataAllUsers.map((value) => {
+                        mockAllUsers.map((value) => {
                             return (
                                 <option key={value.id} value={value.id} id={value.id}>{value.userInfos.firstName}</option>
                             )

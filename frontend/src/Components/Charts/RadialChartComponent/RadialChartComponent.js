@@ -13,8 +13,8 @@ const RadialChartComponent = ({ data }) => {
   return (
     <div className='RadialChartComponent'>
       <ResponsiveContainer width="100%" height="100%">
-        <RadialBarChart startAngle={90} endAngle={450} innerRadius={80} outerRadius={260} cy="55%" barSize={9} data={newData}>
-          <circle cx="50%" cy="55%" fill="white" r="75"></circle>
+        <RadialBarChart startAngle={90} endAngle={450} innerRadius={70} outerRadius={260} cy="55%" barSize={9} data={newData}>
+          <circle cx="50%" cy="55%" fill="white" r="65"></circle>
           <PolarAngleAxis type="number" fill="#ff0101" domain={[0, 100]} tick={false} angleAxisId={0} axisLineType="circle" />
           <RadialBar cornerRadius="10" dataKey="todayScore" />
           <text fontWeight="700" fontSize={26} fill="#282D30" x="50%" y="50%" textAnchor="middle">
