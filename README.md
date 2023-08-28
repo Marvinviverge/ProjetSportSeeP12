@@ -15,4 +15,4 @@ Vous allez vous retrouver sur la page Home du site SportSee. Vous pourrez choisi
 
 - Si vous souhaitez voir les données de l'API, il vous faudra ouvrir un nouveau terminal.
 Rendez-vous dans le dossier "backend", pour cela il faut taper "cd .\backend\".
-Ensuite exécutez la commande "nodemon run start".
+Ensuite exécutez la commande "npm run start".
