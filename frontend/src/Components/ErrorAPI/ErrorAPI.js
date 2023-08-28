@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import MockService from '@/_Services/mock.service.js';
 import { useParams } from 'react-router-dom';
 
-
 import Nutrients from '@/Components/Nutrients/Nutrients';
 import Title from '@/Components/Title/Title';
 
@@ -12,6 +11,7 @@ import RadarChartComponent from '@/Components/Charts/RadarChartComponent/RadarCh
 import LineChartComponent from '@/Components/Charts/LineChartComponent/LineChartComponent.js';
 
 import('./ErrorAPI.css')
+
 const ErrorAPI = () => {
     const { userId } = useParams()
     const currentUserId = Number(userId)
@@ -20,13 +20,9 @@ const ErrorAPI = () => {
     let [error, setError] = useState(false)
     let [mock, setMock] = useState(false)
 
-    let callError = () => {
-        setError(true)
-    }
+    let callError = () => setError(true)
+    let callMock = () => setMock(true)
 
-    let callMock = () => {
-        setMock(true)
-    }
     useEffect(() => {
         getInfo();
         // eslint-disable-next-line
@@ -46,12 +42,11 @@ const ErrorAPI = () => {
         }
         setAlldata(Alldata)
     }
-    if (error) return (
 
+    if (error) return (
         <div className='errorFromAPI'>
             <p>Une erreur est survenue lors de l'appel à l'API.</p>
         </div>
-
     )
 
     if (mock) return (
@@ -78,8 +73,10 @@ const ErrorAPI = () => {
             <p>
                 Attention ! Une erreur est survenue lors de l'appel à l'API. Voulez-vous utiliser les données du MOCK ?
             </p>
-            <button onClick={callMock}>Oui</button>
-            <button onClick={callError}>Non</button>
+            <div className='errorButtons'>
+                <button onClick={callMock}>Oui</button>
+                <button onClick={callError}>Non</button>
+            </div>
         </div>
     );
 };

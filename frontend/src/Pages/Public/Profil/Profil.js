@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import DataService from '@/_Services/data.service.js';
-import './Profil.css'
 
 import { useParams } from 'react-router-dom'
 
@@ -12,6 +11,8 @@ import RadialChartComponent from '@/Components/Charts/RadialChartComponent/Radia
 import RadarChartComponent from '@/Components/Charts/RadarChartComponent/RadarChartComponent.js';
 import LineChartComponent from '@/Components/Charts/LineChartComponent/LineChartComponent.js';
 import ErrorAPI from '@/Components/ErrorAPI/ErrorAPI';
+
+import './Profil.css'
 
 const Profil = () => {
 

@@ -1,0 +1,18 @@
+.errorAPI,
+.errorFromAPI {
+    padding: 40px;
+    font-size: 24px;
+}
+
+.errorButtons {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.errorButtons button {
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    box-shadow: 0px 2px 4px 0px;
+}

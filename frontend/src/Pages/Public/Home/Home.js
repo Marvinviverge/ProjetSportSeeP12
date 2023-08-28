@@ -1,10 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import MockService from '@/_Services/mock.service.js';
 
 import './Home.css'
-import { useNavigate } from 'react-router-dom';
-
 
 const Home = () => {
     const mockAllUsers = MockService.GetAllUsers()
