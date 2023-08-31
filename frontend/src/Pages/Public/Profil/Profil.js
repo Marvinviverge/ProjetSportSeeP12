@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DataService from '@/_Services/data.service.js';
+import MockService from '@/_Services/mock.service.js';
 
 import { useParams } from 'react-router-dom'
 
@@ -10,7 +11,6 @@ import BarChartComponent from '@/Components/Charts/BarChartComponent/BarChartCom
 import RadialChartComponent from '@/Components/Charts/RadialChartComponent/RadialChartComponent.js';
 import RadarChartComponent from '@/Components/Charts/RadarChartComponent/RadarChartComponent.js';
 import LineChartComponent from '@/Components/Charts/LineChartComponent/LineChartComponent.js';
-import ErrorAPI from '@/Components/ErrorAPI/ErrorAPI';
 
 import './Profil.css'
 
@@ -22,7 +22,28 @@ const Profil = () => {
     let [Alldata, setAlldata] = useState({})
     let [waiting, setwaiting] = useState(true)
     let [errorAPI, setErrorAPI] = useState(false)
+    let [error, setError] = useState(false)
 
+    const callError = () => {
+        setError(true)
+        setErrorAPI(false)
+    }
+
+    const callMock = async () => {
+        const dataPerformanceMock = await MockService.GetPerformanceMock(currentUserId)
+        const dataMainMock = await MockService.GetMaindataMock(currentUserId)
+        const dataSessionMock = await MockService.GetSessionsMock(currentUserId)
+        const dataActivityMock = await MockService.GetActivityMock(currentUserId)
+
+        let AlldataMock = {
+            dataPerformance: dataPerformanceMock,
+            dataSession: dataSessionMock,
+            dataActivity: dataActivityMock,
+            dataMain: dataMainMock
+        }
+        setAlldata(AlldataMock)
+        setErrorAPI(false)
+    }
 
     useEffect(() => {
         getInfo();
@@ -51,7 +72,25 @@ const Profil = () => {
     }
 
     if (waiting) return (<h3>Chargement...</h3>)
-    if (errorAPI) return (<ErrorAPI />)
+
+    if (errorAPI) return (
+        <div className='errorAPI'>
+            <p>
+                Attention ! Une erreur est survenue lors de l'appel à l'API. Voulez-vous utiliser les données du MOCK ?
+            </p>
+            <div className='errorButtons'>
+                <button onClick={callMock}>Oui</button>
+                <button onClick={callError}>Non</button>
+            </div>
+        </div>
+    )
+
+    if (error) return (
+        <div className='errorFromAPI'>
+            <p>Une erreur est survenue lors de l'appel à l'API.</p>
+        </div>
+    )
+
     return (
         <section className='profil'>
             <Title data={Alldata.dataMain} />
