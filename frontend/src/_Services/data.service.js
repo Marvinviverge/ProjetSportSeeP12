@@ -52,7 +52,7 @@ let GetPerformance = async (currentUserId) => {
             throw new Error('true');
         }
     } catch (error) {
-        console.error('Error fetching data:', error);
+        return false
     }
 };
 

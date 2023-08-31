@@ -52,23 +52,29 @@ const Profil = () => {
 
     const getInfo = async () => {
         const dataPerformance = await DataService.GetPerformance(currentUserId)
-        const dataMain = await DataService.GetMaindata(currentUserId)
-        const dataSession = await DataService.GetSessions(currentUserId)
-        const dataActivity = await DataService.GetActivity(currentUserId)
-
-        if ((dataPerformance || dataMain || dataSession || dataActivity) === undefined) {
+        if (!dataPerformance) {
             setErrorAPI(true)
             setwaiting(false)
         } else {
-            let NewAlldata = {
-                dataPerformance: dataPerformance,
-                dataSession: dataSession,
-                dataActivity: dataActivity,
-                dataMain: dataMain
+            const dataMain = await DataService.GetMaindata(currentUserId)
+            const dataSession = await DataService.GetSessions(currentUserId)
+            const dataActivity = await DataService.GetActivity(currentUserId)
+
+            if ((dataPerformance || dataMain || dataSession || dataActivity) === undefined) {
+                setErrorAPI(true)
+                setwaiting(false)
+            } else {
+                let NewAlldata = {
+                    dataPerformance: dataPerformance,
+                    dataSession: dataSession,
+                    dataActivity: dataActivity,
+                    dataMain: dataMain
+                }
+                setAlldata(NewAlldata)
+                setwaiting(false)
             }
-            setAlldata(NewAlldata)
-            setwaiting(false)
         }
+
     }
 
     if (waiting) return (<h3>Chargement...</h3>)
